@@ -16,11 +16,11 @@ https://refixreusedontrefuse.netlify.app
 - Web App Manifest for installability
 
 ## Project structure
-├── index.html # All page content, styling, and JS
-├── manifest.webmanifest # App name, colors, icons for install
-├── sw.js # Offline caching + auto-update logic
-├── _headers # Netlify cache-control rules
-└── icons/ # App icons (192, 512, maskable, apple-touch)
+- ├── index.html # All page content, styling, and JS
+- ├── manifest.webmanifest # App name, colors, icons for install
+- ├── sw.js # Offline caching + auto-update logic
+- ├── _headers # Netlify cache-control rules
+- └── icons/ # App icons (192, 512, maskable, apple-touch)
 
 
 ## Running locally
