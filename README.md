@@ -1,57 +1,103 @@
-# REFIX — Smart Repairs. Second Life.
+# REFIX 🔧
+Smart Repairs. Second Life.
+Smartphone repair and refurbishment made simple.
 
-REFIX makes smartphone repair and refurbishment simple: transparent pricing, a quality check, and full service history — one structured repair journey instead of hunting for a technician you can trust.
+**Status:** Pre-launch · Validation stage · Eureka! 2026 Zonals
 
-This repo is the REFIX landing page, built as an installable Progressive Web App (PWA).
+🔗 **Live Site:** [Add your Netlify URL here]
 
-## Live site
+---
 
-https://refixreusedontrefuse.netlify.app
+## 📌 Executive Summary
 
-## Tech stack
-
-- HTML5 + Tailwind CSS (via CDN)
-- Vanilla JavaScript (mobile menu, waitlist form, PWA install prompt)
-- Service worker for offline support and auto-updates
-- Web App Manifest for installability
-
-## Project structure
-- ├── index.html # All page content, styling, and JS
-- ├── manifest.webmanifest # App name, colors, icons for install
-- ├── sw.js # Offline caching + auto-update logic
-- ├── _headers # Netlify cache-control rules
-- └── icons/ # App icons (192, 512, maskable, apple-touch)
+REFIX replaces the fragmented, low-trust world of smartphone repair — informal technicians, blind quotes, unverified parts — with one structured journey. Customers get a transparent price before committing, a quality-checked repair, and a full service history they can actually trust.
+BOOK DIAGNOSIS ──► GET RECOMMENDATION ──► REPAIR / REFURBISH ──► QUALITY CHECK ──► RETURN WITH WARRANTY
 
 
-## Running locally
+## 🌟 Key Features
 
-This is a static site with no build step. To preview it with the service worker working correctly, serve it — don't open `index.html` directly as a file.
+### 🔍 Structured Diagnosis Flow
+- Select your phone model and describe the issue in a guided flow, not a blind shop visit.
+- Instant repair recommendation with an upfront estimated cost.
 
-**With VS Code:**
-1. Install the Live Server extension.
-2. Right-click `index.html` → Open with Live Server.
+### 🛡️ The Trust Layer
+- Transparent pricing shown before you commit.
+- Every repair passes a quality check.
+- Full repair and service history attached to the device, not lost in a shop's paper log.
 
-**With Python:**
+### 💸 Tiered, Transparent Pricing
+| Tier | Starting Price | What's Included |
+|---|---|---|
+| Basic Repair | ₹499+ | Common repairs |
+| Standard Repair | ₹999+ | Parts + repair + quality check |
+| Refurbish | ₹1,999+ | Repair + refurbishment + quality check |
+
+*Planned launch pricing — confirmed at go-live.*
+
+### 📶 Installable, Offline-Capable PWA
+- Full Web App Manifest — installs to home screen on Android, iOS (via Safari "Add to Home Screen"), and desktop.
+- Service worker with network-first loading for your own files, so updates reach visitors on their next open — not stuck behind a stale cache.
+- Automatic update check on return visits and every 30 minutes while the app is open.
+- Offline fallback so the page still loads without a connection.
+
+### 📬 Waitlist Capture
+- Client-side validated email form with inline success/error feedback.
+- Pluggable submission endpoint (Formspree, Apps Script, or your own API) — falls back to local storage until one is configured.
+
+## 🚀 Live Access
+
+| Platform | How to Access | Notes |
+|---|---|---|
+| 🌐 Web / Desktop | Open the live link | Click the install icon in Chrome/Edge's address bar to install |
+| 📱 Android | Open the live link in Chrome | Tap **Install app** in the site menu or Chrome's ⋮ menu |
+| 🍎 iPhone | Open the live link in **Safari** | Share → **Add to Home Screen** (no install prompt exists on iOS) |
+
+## ⚡ Quick Start (Local Development)
+
+This is a static site — no build step, no dependencies to install.
+
+### Prerequisites
+- Any static file server (Python, Node's `serve`, or VS Code's Live Server extension)
+
+### Run locally
 ```bash
+git clone https://github.com/BlackphantomZX/REFIX.git
+cd REFIX
 python3 -m http.server 8000
 ```
 Then open `http://localhost:8000`.
 
-## Deploying
+> ⚠️ Don't open `index.html` directly as a file — the service worker and install prompt only work when served over `http(s)://`, including `localhost`.
 
-Connected to Netlify via this GitHub repo. Every push to `main` triggers an automatic deploy.
+**With VS Code instead:** install the *Live Server* extension → right-click `index.html` → **Open with Live Server**.
 
-Publish directory: `.` (root, no build command needed).
+## 🛠️ Tech Stack
 
-## Updating
+- **Markup & Styling:** HTML5, Tailwind CSS (via CDN), custom CSS for glassmorphism/theming
+- **Fonts:** Space Grotesk (display), Inter (body) — Google Fonts
+- **Scripting:** Vanilla JavaScript — mobile menu, waitlist form, install prompt
+- **PWA:** Web App Manifest, custom Service Worker (network-first for own assets, stale-while-revalidate for CDN assets)
+- **Hosting/Deploy:** Netlify, auto-deployed from this repo on every push to `main`
 
-1. Edit the relevant file(s).
-2. Bump the `VERSION` constant at the top of `sw.js` (e.g. `refix-v2` → `refix-v3`) so cached copies on installed devices refresh.
-3. Commit and push. Netlify deploys automatically.
+## 📁 Project Structure
 
-## Configuration
+├── index.html # All page content, styling, and JS
+├── manifest.webmanifest # App name, colors, icons for install
+├── sw.js # Offline caching + auto-update logic
+├── _headers # Netlify cache-control rules
+└── icons/ # App icons (192, 512, maskable, apple-touch, svg)
 
-In `index.html`, inside the `<script>` at the bottom:
+
+## 🧪 Quick Test Checklist
+
+1. **Install flow:** open the live link on Android Chrome → confirm the install icon/button appears → install → icon lands on home screen.
+2. **Offline mode:** load the site once → open DevTools → Application → Service Workers → tick "Offline" → refresh → page still loads.
+3. **Waitlist form:** submit an invalid email → inline error shows. Submit a valid one → success message shows and resets the field.
+4. **Update propagation:** change `VERSION` in `sw.js`, push, reopen the app on a device that's already visited it → it reloads once with the new version.
+
+## ⚙️ Configuration
+
+Set these in `index.html`, inside the `<script>` block near the bottom, before launch:
 
 ```js
 const CONFIG = {
@@ -60,8 +106,18 @@ const CONFIG = {
 };
 ```
 
-Set these before launch — until `WAITLIST_ENDPOINT` is filled in, emails are only saved in each visitor's own browser and won't reach you.
+Until `WAITLIST_ENDPOINT` is set, submitted emails are saved only in each visitor's own browser and won't reach you.
 
-## Status
+## 🔄 Deploying Updates
 
-Pre-launch. Content sourced from the REFIX Eureka! 2026 pitch deck.
+1. Edit the relevant file(s).
+2. Bump `VERSION` at the top of `sw.js` (e.g. `refix-v2` → `refix-v3`) so installed copies refresh their cache.
+3. Commit and push to `main` — Netlify auto-deploys.
+
+## 🏆 Recognition
+
+Selected for the **Zonals Round** of **Eureka! 2026**, E-Cell IIT Bombay's flagship business model competition.
+
+---
+
+**REFIX** · Smart Repairs. Second Life.
