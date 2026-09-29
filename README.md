@@ -6,7 +6,7 @@ This repo is the REFIX landing page, built as an installable Progressive Web App
 
 ## Live site
 
-[Add your Netlify URL here once deployed]
+https://refixreusedontrefuse.netlify.app
 
 ## Tech stack
 
