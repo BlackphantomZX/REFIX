@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>REFIX — Smart Repairs. Second Life.</title>
+<meta name="description" content="REFIX makes smartphone repair and refurbishment simple: transparent pricing, quality-checked repairs and full service history. Top 1% at Eureka! 2026.">
+<meta name="theme-color" content="#070F0C">
+<meta name="color-scheme" content="dark">
+<meta property="og:title" content="REFIX — Smart Repairs. Second Life.">
+<meta property="og:description" content="Smartphone repair and refurbishment made simple.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { theme: { extend: {
+    colors: { base:'#070F0C', panel:'#0C1712', line:'#1B2E25', mint:'#3DF2A6', mintdim:'#1F8C63', ink:'#E9F3EC', muted:'#93AB9F' },
+    fontFamily: { display:['"Space Grotesk"','sans-serif'], body:['Inter','sans-serif'] }
+  }}};
+</script>
+<style>
+  html { scroll-behavior:smooth; scroll-padding-top:5rem; background:#070F0C; }
+  body { background:#070F0C; padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .glass { background:linear-gradient(160deg, rgba(61,242,166,.07), rgba(12,23,18,.45)); border:1px solid #1B2E25; backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); }
+  .glow { box-shadow:0 0 0 1px rgba(61,242,166,.15), 0 24px 70px -24px rgba(61,242,166,.3); }
+  .num { font-variant-numeric: tabular-nums; }
+  :focus-visible { outline:2px solid #3DF2A6; outline-offset:3px; }
+  ::selection { background:#3DF2A6; color:#070F0C; }
+  @media (prefers-reduced-motion: no-preference) {
+    .rise { animation: rise .9s cubic-bezier(.16,1,.3,1) both; }
+    @keyframes rise { from{opacity:0; transform:translateY(16px)} to{opacity:1; transform:none} }
+    .scan { animation: scan 2.6s ease-in-out infinite; }
+    @keyframes scan { 0%,100%{transform:translateY(0); opacity:.2} 50%{transform:translateY(190px); opacity:.9} }
+  }
+  .wire { background:linear-gradient(90deg,#3DF2A6 0,#1F8C63 100%); }
+</style>
+</head>
+<body class="bg-base text-ink font-body antialiased">
+
+<!-- NAV -->
+<header class="fixed top-0 inset-x-0 z-50 bg-base/70 backdrop-blur-md border-b border-line/60" style="padding-top:env(safe-area-inset-top,0px)">
+  <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+    <a href="#top" class="font-display font-bold text-lg tracking-tight flex items-center gap-2">
+      <img src="icons/icon.svg" alt="" class="w-7 h-7 rounded-md"> REFIX
+    </a>
+    <nav class="hidden md:flex items-center gap-7 text-sm text-muted">
+      <a href="#problem" class="hover:text-ink transition-colors">Problem</a>
+      <a href="#how" class="hover:text-ink transition-colors">How it works</a>
+      <a href="#pricing" class="hover:text-ink transition-colors">Pricing</a>
+      <a href="#traction" class="hover:text-ink transition-colors">Traction</a>
+      <a href="#team" class="hover:text-ink transition-colors">Team</a>
+      <button data-install hidden class="px-4 py-2 rounded-full border border-mintdim text-mint hover:bg-mint hover:text-base transition-colors">Install app</button>
+      <a href="#waitlist" class="px-4 py-2 rounded-full bg-mint text-base font-medium hover:bg-white transition-colors">Join waitlist</a>
+    </nav>
+    <button id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" class="md:hidden w-10 h-10 flex flex-col justify-center items-center gap-1.5">
+      <span class="block w-6 h-px bg-ink"></span><span class="block w-6 h-px bg-ink"></span>
+    </button>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden border-t border-line px-5 py-4 flex flex-col gap-1 text-sm bg-base/95">
+    <a href="#problem" class="py-2.5">Problem</a>
+    <a href="#how" class="py-2.5">How it works</a>
+    <a href="#pricing" class="py-2.5">Pricing</a>
+    <a href="#traction" class="py-2.5">Traction</a>
+    <a href="#team" class="py-2.5">Team</a>
+    <button data-install hidden class="py-2.5 text-left text-mint">Install app</button>
+    <a href="#waitlist" class="mt-2 py-3 text-center rounded-full bg-mint text-base font-medium">Join waitlist</a>
+  </div>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<section class="relative pt-32 pb-20 px-5 overflow-hidden">
+  <div class="pointer-events-none absolute -top-40 -right-40 w-[520px] h-[520px] rounded-full blur-3xl opacity-20" style="background:#3DF2A6"></div>
+  <div class="max-w-6xl mx-auto relative grid md:grid-cols-[1.1fr_.9fr] gap-14 items-center">
+    <div class="rise">
+      <a href="#traction" class="inline-flex items-center gap-2 text-xs text-mint mb-6 px-3 py-1.5 rounded-full border border-mintdim/60 hover:bg-mint/10 transition-colors">
+        <span class="w-1.5 h-1.5 rounded-full bg-mint"></span> Top 1% selected for Zonals · Eureka! 2026
+      </a>
+      <h1 class="font-display text-4xl sm:text-5xl md:text-[3.5rem] leading-[1.06] font-semibold tracking-tight">
+        A repairable phone shouldn't become a replacement purchase.
+      </h1>
+      <p class="mt-6 text-lg text-muted max-w-xl leading-relaxed">
+        REFIX makes smartphone repair and refurbishment simple: one structured journey with transparent pricing, a quality check, and full service history — instead of hunting for a technician you can trust.
+      </p>
+      <div class="mt-9 flex flex-wrap gap-4">
+        <a href="#waitlist" class="px-6 py-3.5 rounded-full bg-mint text-base font-semibold hover:bg-white transition-colors">Join waitlist</a>
+        <a href="#problem" class="px-6 py-3.5 rounded-full border border-line hover:border-mint transition-colors">Learn more</a>
+      </div>
+    </div>
+
+    <!-- Diagnosis mockup -->
+    <div class="rise mx-auto w-full max-w-sm" style="animation-delay:.12s">
+      <div class="glass glow rounded-[2rem] p-5 relative overflow-hidden">
+        <div class="flex items-center justify-between text-xs text-muted mb-4"><span>Book a diagnosis</span><span class="text-mint">● Step 1 of 4</span></div>
+        <div class="rounded-2xl border border-line bg-base/60 p-4 relative overflow-hidden h-[210px]">
+          <div class="scan absolute left-0 right-0 top-2 h-px wire"></div>
+          <p class="text-xs text-muted">Your phone</p>
+          <p class="font-display text-lg mt-1">Select model</p>
+          <p class="text-xs text-muted mt-5">Issue</p>
+          <div class="flex flex-wrap gap-2 mt-2 text-xs">
+            <span class="px-3 py-1.5 rounded-full bg-mint text-base font-medium">Cracked screen</span>
+            <span class="px-3 py-1.5 rounded-full border border-line">Battery</span>
+            <span class="px-3 py-1.5 rounded-full border border-line">Charging</span>
+            <span class="px-3 py-1.5 rounded-full border border-line">Other</span>
+          </div>
+        </div>
+        <div class="mt-4 rounded-2xl border border-line bg-base/60 p-4 flex items-center justify-between">
+          <div><p class="text-xs text-muted">Recommendation</p><p class="text-sm mt-0.5">Repair with quality check</p></div>
+          <p class="font-display text-lg text-mint">Est. cost shown upfront</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem" class="px-5 py-24 border-t border-line">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="font-display text-3xl md:text-4xl font-semibold max-w-2xl leading-tight">People replace smartphones over small, repairable issues.</h2>
+    <p class="mt-4 text-muted max-w-2xl text-lg">A new phone often costs far more than a repair, leaving the old device unused or discarded.</p>
+    <div class="mt-12 grid md:grid-cols-3 gap-5">
+      <div class="glass rounded-2xl p-6">
+        <h3 class="font-display text-lg text-mint">How it's solved today</h3>
+        <p class="mt-3 text-sm text-muted leading-relaxed">Local repair shops, brand-authorized service centres, informal technicians, or replacing the phone altogether.</p>
+      </div>
+      <div class="glass rounded-2xl p-6">
+        <h3 class="font-display text-lg text-mint">Why that falls short</h3>
+        <p class="mt-3 text-sm text-muted leading-relaxed">Uncertainty around repair quality, pricing, genuine parts and reliability — the gap Right to Repair India is pushing to close.</p>
+      </div>
+      <div class="glass rounded-2xl p-6">
+        <h3 class="font-display text-lg text-mint">Why now</h3>
+        <p class="mt-3 text-sm text-muted leading-relaxed">Global smartphone replacement cycles have stretched to nearly four years, and second-life devices are growing fast (Counterpoint Research).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="px-5 py-24 border-t border-line">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="font-display text-3xl md:text-4xl font-semibold">Repair, in four steps</h2>
+    <p class="mt-4 text-muted max-w-xl">A structured repair journey instead of randomly searching for a technician.</p>
+    <ol class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <li class="glass rounded-2xl p-6">
+        <span class="w-9 h-9 rounded-full bg-mint text-base font-display font-semibold flex items-center justify-center">1</span>
+        <h3 class="font-display text-lg mt-5">Book a diagnosis</h3>
+        <p class="text-sm text-muted mt-2 leading-relaxed">Select your phone and describe the issue.</p>
+      </li>
+      <li class="glass rounded-2xl p-6">
+        <span class="w-9 h-9 rounded-full bg-mint text-base font-display font-semibold flex items-center justify-center">2</span>
+        <h3 class="font-display text-lg mt-5">Get a recommendation</h3>
+        <p class="text-sm text-muted mt-2 leading-relaxed">See the suggested fix with an estimated cost.</p>
+      </li>
+      <li class="glass rounded-2xl p-6">
+        <span class="w-9 h-9 rounded-full bg-mint text-base font-display font-semibold flex items-center justify-center">3</span>
+        <h3 class="font-display text-lg mt-5">Repair or refurbish</h3>
+        <p class="text-sm text-muted mt-2 leading-relaxed">Done through our network, then quality-checked.</p>
+      </li>
+      <li class="glass rounded-2xl p-6">
+        <span class="w-9 h-9 rounded-full bg-mint text-base font-display font-semibold flex items-center justify-center">4</span>
+        <h3 class="font-display text-lg mt-5">Get it back</h3>
+        <p class="text-sm text-muted mt-2 leading-relaxed">Your phone returns with service info and warranty.</p>
+      </li>
+    </ol>
+    <div class="mt-6 glass glow rounded-2xl p-7 md:p-9 grid md:grid-cols-[auto_1fr] gap-6 items-center">
+      <div class="w-14 h-14 rounded-2xl bg-mint/10 border border-mintdim/50 flex items-center justify-center text-mint">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.2 7.8 8 9 4.8-1.2 8-4.5 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+      </div>
+      <div>
+        <h3 class="font-display text-xl">The Trust Layer</h3>
+        <p class="text-muted mt-2 leading-relaxed max-w-3xl">Transparent pricing, a quality check, and full repair and service history. It's what makes REFIX a trusted repair platform, not just another repair shop.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="px-5 py-24 border-t border-line">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="font-display text-3xl md:text-4xl font-semibold">Clear pricing, from day one</h2>
+    <p class="mt-4 text-muted max-w-xl">Planned starting prices. REFIX is pre-launch, so final pricing is confirmed at launch.</p>
+    <div class="mt-12 grid md:grid-cols-3 gap-5">
+      <div class="glass rounded-2xl p-7">
+        <h3 class="font-display text-lg">Basic Repair</h3>
+        <p class="font-display text-4xl mt-4 text-mint num">₹499<span class="text-lg text-muted">+</span></p>
+        <p class="text-sm text-muted mt-4">Common repairs.</p>
+      </div>
+      <div class="glass glow rounded-2xl p-7">
+        <h3 class="font-display text-lg">Standard Repair</h3>
+        <p class="font-display text-4xl mt-4 text-mint num">₹999<span class="text-lg text-muted">+</span></p>
+        <p class="text-sm text-muted mt-4">Parts, repair and quality check.</p>
+      </div>
+      <div class="glass rounded-2xl p-7">
+        <h3 class="font-display text-lg">Refurbish</h3>
+        <p class="font-display text-4xl mt-4 text-mint num">₹1,999<span class="text-lg text-muted">+</span></p>
+        <p class="text-sm text-muted mt-4">Repair, refurbishment and quality check.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRACTION -->
+<section id="traction" class="px-5 py-24 border-t border-line relative overflow-hidden">
+  <div class="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] h-[640px] rounded-full blur-3xl opacity-10" style="background:#3DF2A6"></div>
+  <div class="max-w-6xl mx-auto relative grid lg:grid-cols-2 gap-12 items-center">
+    <div>
+      <h2 class="font-display text-3xl md:text-4xl font-semibold leading-tight">Top 1% of startups, selected for the Eureka! 2026 Zonals</h2>
+      <p class="mt-5 text-muted leading-relaxed max-w-lg">Eureka! is E-Cell IIT Bombay's flagship business model competition. REFIX was selected for the Zonals Round in the top 1% of participating startups.</p>
+    </div>
+    <div class="glass glow rounded-2xl p-7 space-y-5">
+      <div><p class="text-xs text-muted">Stage</p><p class="font-display text-lg mt-1">Pre-launch and validation</p></div>
+      <div class="border-t border-line pt-5"><p class="text-xs text-muted">Current focus</p><p class="mt-1">Customer validation, repair-network validation and MVP development.</p></div>
+      <div class="border-t border-line pt-5"><p class="text-xs text-muted">Our hypothesis</p><p class="mt-1 text-muted">Customers want a repair option when it is more transparent, affordable and trustworthy than replacing the device.</p></div>
+      <div class="border-t border-line pt-5"><p class="text-xs text-muted">First customers</p><p class="mt-1 text-muted">College students and young smartphone users in urban India, reached through Instagram, campus communities, referrals, ambassadors and a repair-partner network.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="px-5 py-24 border-t border-line">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="font-display text-3xl md:text-4xl font-semibold">The team behind REFIX</h2>
+    <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5" id="teamGrid"></div>
+  </div>
+</section>
+
+<!-- WAITLIST -->
+<section id="waitlist" class="px-5 py-24 border-t border-line">
+  <div class="max-w-2xl mx-auto text-center">
+    <h2 class="font-display text-3xl md:text-4xl font-semibold">Smart repairs. Second life.</h2>
+    <p class="mt-4 text-muted">Join the waitlist and we'll email you when REFIX opens in your city.</p>
+    <form id="waitlistForm" class="mt-8 flex flex-col sm:flex-row gap-3 justify-center" novalidate>
+      <label for="email" class="sr-only">Email address</label>
+      <input id="email" name="email" type="email" required autocomplete="email" inputmode="email" placeholder="you@email.com"
+        class="flex-1 sm:max-w-xs px-5 py-3.5 rounded-full bg-panel border border-line text-ink placeholder:text-muted focus:outline-none focus:border-mint transition-colors">
+      <button id="submitBtn" type="submit" class="px-6 py-3.5 rounded-full bg-mint text-base font-semibold hover:bg-white transition-colors disabled:opacity-60">Join waitlist</button>
+    </form>
+    <p id="formMsg" class="mt-3 text-sm min-h-[1.25rem]" role="status" aria-live="polite"></p>
+  </div>
+</section>
+</main>
+
+<footer class="px-5 pt-10 border-t border-line" style="padding-bottom:calc(2.5rem + env(safe-area-inset-bottom,0px))">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted">
+    <span>REFIX © 2026 · Smart Repairs. Second Life.</span>
+    <div class="flex items-center gap-5">
+      <a href="#" data-social="instagram" class="hover:text-ink transition-colors">Instagram</a>
+      <a href="#" data-social="linkedin" class="hover:text-ink transition-colors">LinkedIn</a>
+      <a href="#" data-social="email" class="hover:text-ink transition-colors">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ---- Config: edit these before launch ---- */
+  const CONFIG = {
+    // POST endpoint for waitlist emails (Formspree, Google Apps Script, your API...). Leave '' to store locally only.
+    WAITLIST_ENDPOINT: '',
+    SOCIAL: { instagram: '', linkedin: '', email: '' }  // e.g. email: 'mailto:hello@yourdomain.com'
+  };
+
+  const team = [
+    ['Siddharth Pathak','Founder & CEO','Outlet expansion and operations'],
+    ['Payal Tiwari','Inventory Manager','Stock planning and management'],
+    ['Warish Khan','Inventory Manager','Inventory tracking and supply coordination'],
+    ['Harshit Kumar Yadav','PR Manager','Public relations and brand communication'],
+    ['Nishi Shukla','Customer Retention Manager','Customer experience and retention'],
+    ['Apurv Mishra','Finance Manager','Financial planning and cost management'],
+    ['Shreyansh Patel','Finance Manager','Financial analysis and financial operations']
+  ];
+  document.getElementById('teamGrid').innerHTML = team.map(([n,r,d],i) => {
+    const ini = n.split(' ').map(w=>w[0]).slice(0,2).join('');
+    return `<div class="glass rounded-2xl p-5 ${i===0?'sm:col-span-2 lg:col-span-1 glow':''}">
+      <div class="w-12 h-12 rounded-full bg-mint/10 border border-mintdim/50 text-mint font-display flex items-center justify-center">${ini}</div>
+      <p class="font-medium mt-4">${n}</p>
+      <p class="text-sm text-mint mt-0.5">${r}</p>
+      <p class="text-xs text-muted mt-2">${d}</p></div>`;
+  }).join('');
+
+  document.querySelectorAll('[data-social]').forEach(a => {
+    const v = CONFIG.SOCIAL[a.dataset.social];
+    if (v) { a.href = v; if (v.startsWith('http')) { a.target = '_blank'; a.rel = 'noopener'; } }
+    else a.addEventListener('click', e => e.preventDefault());
+  });
+
+  /* Mobile menu */
+  const menuBtn = document.getElementById('menuBtn'), mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('hidden') === false;
+    menuBtn.setAttribute('aria-expanded', String(open));
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { mobileMenu.classList.add('hidden'); menuBtn.setAttribute('aria-expanded','false'); }));
+
+  /* Waitlist form */
+  const form = document.getElementById('waitlistForm'), msg = document.getElementById('formMsg'), btn = document.getElementById('submitBtn');
+  const say = (t, cls) => { msg.textContent = t; msg.className = 'mt-3 text-sm min-h-[1.25rem] ' + cls; };
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const email = form.email.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return say('Enter a valid email address, like you@email.com.', 'text-amber-300');
+    btn.disabled = true; btn.textContent = 'Joining…';
+    try {
+      if (CONFIG.WAITLIST_ENDPOINT) {
+        const r = await fetch(CONFIG.WAITLIST_ENDPOINT, { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ email, source:'refix-landing' }) });
+        if (!r.ok) throw new Error('bad response');
+      } else {
+        try { const l = JSON.parse(localStorage.getItem('refix_waitlist')||'[]'); l.push(email); localStorage.setItem('refix_waitlist', JSON.stringify(l)); } catch (_) {}
+      }
+      say("You're on the waitlist. We'll email you when REFIX launches.", 'text-mint'); form.reset();
+    } catch (_) {
+      say("Couldn't join the waitlist. Check your connection and try again.", 'text-amber-300');
+    } finally { btn.disabled = false; btn.textContent = 'Join waitlist'; }
+  });
+
+  /* PWA: service worker + install prompt */
+  if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+    window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+  }
+  let deferred;
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault(); deferred = e;
+    document.querySelectorAll('[data-install]').forEach(b => b.hidden = false);
+  });
+  document.querySelectorAll('[data-install]').forEach(b => b.addEventListener('click', async () => {
+    if (!deferred) return; deferred.prompt(); await deferred.userChoice; deferred = null;
+    document.querySelectorAll('[data-install]').forEach(x => x.hidden = true);
+  }));
+  window.addEventListener('appinstalled', () => document.querySelectorAll('[data-install]').forEach(x => x.hidden = true));
+</script>
+</body>
+</html>
