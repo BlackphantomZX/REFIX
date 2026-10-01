@@ -54,7 +54,7 @@
       <a href="#how" class="hover:text-ink transition-colors">How it works</a>
       <a href="#pricing" class="hover:text-ink transition-colors">Pricing</a>
       <a href="#traction" class="hover:text-ink transition-colors">Traction</a>
-      <a href="#team" class="hover:text-ink transition-colors">Team</a>
+      
       <button data-install hidden class="px-4 py-2 rounded-full border border-mintdim text-mint hover:bg-mint hover:text-base transition-colors">Install app</button>
       <a href="#waitlist" class="px-4 py-2 rounded-full bg-mint text-base font-medium hover:bg-white transition-colors">Join waitlist</a>
     </nav>
@@ -254,16 +254,7 @@
     WAITLIST_ENDPOINT: '',
     SOCIAL: { instagram: '', linkedin: '', email: '' }  // e.g. email: 'mailto:hello@yourdomain.com'
   };
-
-  const team = [
-    ['Siddharth Pathak','Founder & CEO','Outlet expansion and operations'],
-    ['Payal Tiwari','Inventory Manager','Stock planning and management'],
-    ['Warish Khan','Inventory Manager','Inventory tracking and supply coordination'],
-    ['Harshit Kumar Yadav','PR Manager','Public relations and brand communication'],
-    ['Nishi Shukla','Customer Retention Manager','Customer experience and retention'],
-    ['Apurv Mishra','Finance Manager','Financial planning and cost management'],
-    ['Shreyansh Patel','Finance Manager','Financial analysis and financial operations']
-  ];
+  
   document.getElementById('teamGrid').innerHTML = team.map(([n,r,d],i) => {
     const ini = n.split(' ').map(w=>w[0]).slice(0,2).join('');
     return `<div class="glass rounded-2xl p-5 ${i===0?'sm:col-span-2 lg:col-span-1 glow':''}">
