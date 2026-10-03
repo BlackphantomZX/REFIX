@@ -252,14 +252,7 @@
     SOCIAL: { instagram: '', linkedin: '', email: '' }  // e.g. email: 'mailto:hello@yourdomain.com'
   };
   
-  document.getElementById('teamGrid').innerHTML = team.map(([n,r,d],i) => {
-    const ini = n.split(' ').map(w=>w[0]).slice(0,2).join('');
-    return `<div class="glass rounded-2xl p-5 ${i===0?'sm:col-span-2 lg:col-span-1 glow':''}">
-      <div class="w-12 h-12 rounded-full bg-mint/10 border border-mintdim/50 text-mint font-display flex items-center justify-center">${ini}</div>
-      <p class="font-medium mt-4">${n}</p>
-      <p class="text-sm text-mint mt-0.5">${r}</p>
-      <p class="text-xs text-muted mt-2">${d}</p></div>`;
-  }).join('');
+
 
   document.querySelectorAll('[data-social]').forEach(a => {
     const v = CONFIG.SOCIAL[a.dataset.social];
